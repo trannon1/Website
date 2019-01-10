@@ -5,6 +5,8 @@ class HomePage extends Component {
   render() {
     return (
       <div>
+        <head>
+        </head>
         Home page
         <h2>My Items</h2>
         <ItemTable />
