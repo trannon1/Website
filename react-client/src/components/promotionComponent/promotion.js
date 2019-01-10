@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import $ from "jquery";
-import "./item.css";
+import "./promotion.css";
 
-class ItemTable extends Component {
+class PromotionTable extends Component {
     render() {
 
-    var url = "http://jst.edchavez.com/api/inventory/getInventory/";
+    var url = "http://jst.edchavez.com/api/promo/";
 
     function jList(obj){
         // Make a container element for the list
@@ -30,18 +30,21 @@ class ItemTable extends Component {
         // Add it to the page
         listContainer.appendChild(listElement);
 
-        for (var i = 0; i < obj["items"].length; ++i) {
+        for (var i = 0; i < obj.length; ++i) {
             // create an item for each one
             var listItem = document.createElement("li");
             var listAttr = document.createAttribute("class");
-            listAttr.value = "items";
+            listAttr.value = "promotions";
             listItem.setAttributeNode(listAttr);
             var html = 
-            '<span class="name">' + obj["items"][i]["name"] + '</span>' + 
-            '<span class="description">' + obj["items"][i]["description"] + '</span>' + 
-            '<span class="price">' + obj["items"][i]["price"] + '</span>' +
-            '<span class="itemId">' + obj["items"][i]["itemId"] + '</span>' + 
-            '<span class="inStock">' + obj["items"][i]["inStock"] + '</span>';
+            '<span class="orderSubTotal">' + obj[i]["orderSubTotal"] + '</span>' + 
+            '<span class="promoAmt">' + obj[i]["promoAmt"] + '</span>' + 
+            '<span class="promoId">' + obj[i]["promoId"] + '</span>' +
+            '<span class="promotionName">' + obj[i]["promotionName"] + '</span>' + 
+            '<span class="start">' + obj[i]["start"] + '</span>' +
+            '<span class="end">' + obj[i]["end"] + '</span>' +
+            '<span class="minimumOrderValue">' + obj[i]["minimumOrderValue"] + '</span>' +
+            '<span class="promotionType">' + obj[i]["promotionType"] + '</span>';
 
             // Add the item text
             listItem.innerHTML = html;
@@ -67,4 +70,4 @@ class ItemTable extends Component {
     }
   }
   
-  export default ItemTable;
+  export default PromotionTable;

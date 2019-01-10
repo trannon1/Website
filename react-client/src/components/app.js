@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
 // import { browserHistory } from 'react-router';
 import HomePage from './pages/homePage.js';
+import ItemPage from './pages/itemPage.js';
+import ShippingOptionPage from './pages/shippingOptionPage.js';
+import PromotionPage from './pages/promotionPage.js';
 import NavBar from './headerComponent/navBar.js';
 import Footer from './footerComponent/footer.js';
 
@@ -11,7 +14,10 @@ class App extends Component {
       <Router>
         <div>
           <NavBar />
-          <Route name="home" exact path="/" component={HomePage} />
+          <Route exact path="/" component={HomePage} />
+          <Route path="/itemPage" component={ItemPage} />
+          <Route path="/promotionPage" component={PromotionPage} />
+          <Route path="/shippingOptionPage" component={ShippingOptionPage} />
           <Footer />
         </div>
       </Router>
