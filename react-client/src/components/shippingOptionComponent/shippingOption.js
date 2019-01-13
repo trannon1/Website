@@ -10,9 +10,13 @@ class ShippingOptionTable extends Component {
     function jList(obj){
         // Make a container element for the list
         var listContainer = document.createElement("div");
+        var listAttr = document.createAttribute("id");
+        listAttr.value = "shippingOption";
+        listContainer.setAttributeNode(listAttr);
 
         // Add it to the page
-        document.getElementsByTagName("body")[0].appendChild(listContainer);
+        if(document.getElementById("shippingOption") == null){
+            document.getElementsByTagName("body")[0].appendChild(listContainer);
 
         // Make the list
         var listElement = document.createElement("ul");
@@ -29,6 +33,23 @@ class ShippingOptionTable extends Component {
 
         // Add it to the page
         listContainer.appendChild(listElement);
+
+        // create an item for each one
+        var listItem = document.createElement("li");
+        var listAttr = document.createAttribute("class");
+        listAttr.value = "shippingOptions";
+        listItem.setAttributeNode(listAttr);
+        var html = 
+        '<span class="carrierName">' + "Carrier Name" + '</span>' + 
+        '<span class="shipCost">' + "Ship Cost" + '</span>' + 
+        '<span class="shipOptionId">' + "Ship Option Id" + '</span>' +
+        '<span class="shipOptionName">' + "Ship Option Name" + '</span>';
+
+        // Add the item text
+        listItem.innerHTML = html;
+
+        // Add listItem to the listElement
+        listElement.appendChild(listItem);
 
         for (var i = 0; i < obj.length; ++i) {
             // create an item for each one
@@ -48,7 +69,9 @@ class ShippingOptionTable extends Component {
             // Add listItem to the listElement
             listElement.appendChild(listItem);
         }
+        document.getElementById("shippingBox").appendChild(listContainer);
     }
+}
 
     function makeList() {
 

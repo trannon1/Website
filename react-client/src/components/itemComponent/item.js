@@ -10,61 +10,85 @@ class ItemTable extends Component {
     function jList(obj){
         // Make a container element for the list
         var listContainer = document.createElement("div");
+        var listAttr = document.createAttribute("id");
+        listAttr.value = "item";
+        listContainer.setAttributeNode(listAttr);
 
         // Add it to the page
-        document.getElementsByTagName("body")[0].appendChild(listContainer);
+        if(document.getElementById("item") == null){
+            document.getElementsByTagName("body")[0].appendChild(listContainer);
 
-        // Make the list
-        var listElement = document.createElement("ul");
+            // Make the list
+            var listElement = document.createElement("ul");
 
-        /* create the link element */
-        var linkElement = document.createElement('link');
+            /* create the link element */
+            var linkElement = document.createElement('link');
 
-        /* add attributes */
-        linkElement.setAttribute('rel', 'stylesheet');
-        linkElement.setAttribute('href', './src/components/itemComponent/item.css');
+            /* add attributes */
+            linkElement.setAttribute('rel', 'stylesheet');
+            linkElement.setAttribute('href', './src/components/itemComponent/item.css');
 
-        /* attach to the document head */
-        document.getElementsByTagName('head')[0].appendChild(linkElement)
+            /* attach to the document head */
+            document.getElementsByTagName('head')[0].appendChild(linkElement)
 
-        // Add it to the page
-        listContainer.appendChild(listElement);
+            // Add it to the page
+            listContainer.appendChild(listElement);
 
-        for (var i = 0; i < obj["items"].length; ++i) {
             // create an item for each one
             var listItem = document.createElement("li");
             var listAttr = document.createAttribute("class");
             listAttr.value = "items";
             listItem.setAttributeNode(listAttr);
             var html = 
-            '<span class="name">' + obj["items"][i]["name"] + '</span>' + 
-            '<span class="description">' + obj["items"][i]["description"] + '</span>' + 
-            '<span class="price">' + obj["items"][i]["price"] + '</span>' +
-            '<span class="itemId">' + obj["items"][i]["itemId"] + '</span>' + 
-            '<span class="inStock">' + obj["items"][i]["inStock"] + '</span>';
+            '<span class="name">' + "Name" + '</span>' + 
+            '<span class="description">' + "Description" + '</span>' + 
+            '<span class="price">' + "Price" + '</span>' +
+            '<span class="itemId">' + "Item ID" + '</span>' + 
+            '<span class="inStock">' + "In Stock" + '</span>';
 
             // Add the item text
             listItem.innerHTML = html;
 
             // Add listItem to the listElement
             listElement.appendChild(listItem);
+
+            for (var i = 0; i < obj["items"].length; ++i) {
+                // create an item for each one
+                var listItem = document.createElement("li");
+                var listAttr = document.createAttribute("class");
+                listAttr.value = "items";
+                listItem.setAttributeNode(listAttr);
+                var html = 
+                '<span class="name">' + obj["items"][i]["name"] + '</span>' + 
+                '<span class="description">' + obj["items"][i]["description"] + '</span>' + 
+                '<span class="price">' + obj["items"][i]["price"] + '</span>' +
+                '<span class="itemId">' + obj["items"][i]["itemId"] + '</span>' + 
+                '<span class="inStock">' + obj["items"][i]["inStock"] + '</span>';
+
+                // Add the item text
+                listItem.innerHTML = html;
+
+                // Add listItem to the listElement
+                listElement.appendChild(listItem);
+            }
+            
+        document.getElementById("itemBox").appendChild(listContainer);
         }
     }
 
-    function makeList() {
+        function makeList() {
+            $.get(url, function (d) {
+                jList(d);
+            });
+        }
 
-    $.get(url, function (d) {
-        jList(d);
-    });
-}
+        // Usage
+        makeList();
 
-    // Usage
-    makeList();
-
-      return (
-        <list />
-      )
+        return (
+            <list />
+        )
+        }
     }
-  }
   
   export default ItemTable;

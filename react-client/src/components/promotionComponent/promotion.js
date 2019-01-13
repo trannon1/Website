@@ -10,9 +10,13 @@ class PromotionTable extends Component {
     function jList(obj){
         // Make a container element for the list
         var listContainer = document.createElement("div");
+        var listAttr = document.createAttribute("id");
+        listAttr.value = "promotion";
+        listContainer.setAttributeNode(listAttr);
 
         // Add it to the page
-        document.getElementsByTagName("body")[0].appendChild(listContainer);
+        if(document.getElementById("promotion") == null){
+            document.getElementsByTagName("body")[0].appendChild(listContainer);
 
         // Make the list
         var listElement = document.createElement("ul");
@@ -29,6 +33,27 @@ class PromotionTable extends Component {
 
         // Add it to the page
         listContainer.appendChild(listElement);
+
+        // create an item for each one
+        var listItem = document.createElement("li");
+        var listAttr = document.createAttribute("class");
+        listAttr.value = "promotions";
+        listItem.setAttributeNode(listAttr);
+        var html = 
+        '<span class="orderSubTotal">' + "Order SubTotal" + '</span>' + 
+        '<span class="promoAmt">' + "Promotion Amount" + '</span>' + 
+        '<span class="promoId">' + "Promotion ID" + '</span>' +
+        '<span class="promotionName">' + "Promotion Name" + '</span>' + 
+        '<span class="start">' + "Start" + '</span>' +
+        '<span class="end">' + "End" + '</span>' +
+        '<span class="minimumOrderValue">' + "Minimum Order Value" + '</span>' +
+        '<span class="promotionType">' + "Promotion Type" + '</span>';
+
+        // Add the item text
+        listItem.innerHTML = html;
+
+        // Add listItem to the listElement
+        listElement.appendChild(listItem);
 
         for (var i = 0; i < obj.length; ++i) {
             // create an item for each one
@@ -52,7 +77,9 @@ class PromotionTable extends Component {
             // Add listItem to the listElement
             listElement.appendChild(listItem);
         }
+        document.getElementById("promotionBox").appendChild(listContainer);
     }
+}
 
     function makeList() {
 

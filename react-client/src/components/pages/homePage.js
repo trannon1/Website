@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
-
+import {ItemBox, PromotionBox, ShippingBox} from '../tablesComponent/tables.js';
 
 class HomePage extends Component {
+
   render() {
     return (
       <div>
-        Home page
-      </div>  
+        <h2>Home page</h2>
+        <ItemBox />
+        <PromotionBox />
+        <ShippingBox />
+      </div>
     )
   }
 }
