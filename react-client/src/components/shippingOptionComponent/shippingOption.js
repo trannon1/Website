@@ -82,10 +82,6 @@ class ShippingOptionTable extends Component {
 
     // Usage
     makeList();
-
-      return (
-        <list />
-      )
     }
   }
   

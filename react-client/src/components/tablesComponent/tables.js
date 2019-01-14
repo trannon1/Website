@@ -19,7 +19,8 @@ import ShippingOptionTable from '../shippingOptionComponent/shippingOption.js';
       return (
         <div>
           <a onClick={this.onClick.bind(this)} href='#' id = "itemBox">My Items</a>
-          {this.state.showBox && < ItemTable/>}
+          {this.state.showBox && < ItemTable />}
+          {this.state.showBox && document.getElementsById("item")}
         </div>
       )
     }

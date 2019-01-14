@@ -90,10 +90,6 @@ class PromotionTable extends Component {
 
     // Usage
     makeList();
-
-      return (
-        <list />
-      )
     }
   }
   

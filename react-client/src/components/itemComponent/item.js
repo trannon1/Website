@@ -84,10 +84,6 @@ class ItemTable extends Component {
 
         // Usage
         makeList();
-
-        return (
-            <list />
-        )
         }
     }
   
